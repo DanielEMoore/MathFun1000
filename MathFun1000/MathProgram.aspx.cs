@@ -9,9 +9,11 @@ namespace MathFun1000
 {
     public partial class MathProgram : System.Web.UI.Page
     {
+        public Chapter chapter;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
