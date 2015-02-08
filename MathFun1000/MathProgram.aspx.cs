@@ -10,11 +10,11 @@ namespace MathFun1000
     public partial class MathProgram : System.Web.UI.Page
     {
         public Chapter chapter;
-        public Tutorial[] steps;
+        public Tutorial steps = new Tutorial();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            setUpSteps();
+            //setUpSteps();
 
             if(!IsPostBack)
             {
@@ -25,19 +25,19 @@ namespace MathFun1000
 
         }
 
-        private void setUpSteps()
-        {
-            steps = new Tutorial[9];
+        //private void setUpSteps()
+        //{
+        //    steps = new Tutorial[9];
 
-            for(int i = 0; i < steps.Length; i++)
-            {
-                steps[i] = new Tutorial();
+        //    for(int i = 0; i < steps.Length; i++)
+        //    {
+        //        steps[i] = new Tutorial();
 
-                steps[i].example = i.ToString();
-                steps[i].rule = i.ToString();
-                steps[i].step = i.ToString();
-            }
-        }
+        //        steps[i].example = i.ToString();
+        //        steps[i].rule = i.ToString();
+        //        steps[i].step = i.ToString();
+        //    }
+        //}
 
         protected void StepForwardButton_Click(object sender, EventArgs e)
         {
@@ -51,16 +51,15 @@ namespace MathFun1000
         {
             string code = "";
 
-
             for (int i = 0; i <= Convert.ToInt32(stepCount.Value); i++)
             {
-                if (i < steps.Length)
+                if (i < steps.number_of_steps)
                 {
                     code += "<div class=\"StepContainer\">";
 
-                    code += "<div class=\"box\">" + steps[i].example + "</div>";
-                    code += "<div class=\"box\">" + steps[i].step + "</div>";
-                    code += "<div class=\"box\">" + steps[i].rule + "</div>";
+                    code += "<div class=\"box\">" + steps.step[i] + "</div>";
+                    code += "<div class=\"box\">" + steps.example[i] + "</div>";
+                    code += "<div class=\"box\">" + steps.rule[i] + "</div>";
 
                     code += "</div>";
                 }
